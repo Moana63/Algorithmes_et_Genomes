@@ -1,14 +1,11 @@
+# On définit les library a importer pour les rendus graphique et on indique la taille à utiliser pour les figures
 import matplotlib.pyplot as pyplot
-
-# la taille à utiliser pour les figures
 import pylab
 pylab.rcParams['figure.figsize'] = 10., 6.
 
 
-
-
 #PARTIE 4 COMPTER LE RATIO ENTRE LES NUCLEOTIDES C ET G LE LONG DE LA CHAINE
-#definir une fonction qui compte le nombre de G et de C dans une portion d'ADN (entre debut et fin)
+#on définit une fonction qui compte le nombre de G et de C dans une portion d'ADN (entre debut et fin)
 def compte (sequence, debut, fin):
 	nbg = nbc = 0
 	for lettre in sequence[debut:fin]:  #pour la sous unité dans ma str
@@ -18,25 +15,24 @@ def compte (sequence, debut, fin):
 			nbc += 1
 	return nbg, nbc
 
-#Definir une fonction qui portionne l'ADN en "portions" qui se recouvrent les unes les autres (parametres ADN, portion et recouvrement)
+#On définit une fonction qui portionne l'ADN en "portions" qui se recouvrent les unes les autres (parametres ADN, portion et recouvrement)
 # et qui calcule la proportion de G et de C dans chaques portions
 def portion_ADN (sequence, portion, recouvrement):
-	list_y , list_x = [],[]
+	list_x , list_y = [],[] # listes d'abscisses x et d'ordonnées y
 	longueur_seq = len(sequence)
 	debut=0
 
-#tant qu'il est possible de créer un portion le long de la chaine (sequence non terminé)
-	while debut < longueur_seq:
+	while debut < longueur_seq: #tant qu'il est possible de créer un portion le long de la chaine (sequence non terminée)
 	
-		nbg_portion, nbc_portion = compte(sequence, debut, debut+portion)
-		x=debut
+		nbg_portion, nbc_portion = compte(sequence, debut, debut+portion) #utilise la fonction compte définie anterieurement pour compter le nombre de G et de C dans la portion
+		x=debut #abscisse qui correspond a un index sur la chaine
 	
-		if nbg_portion==0 and nbc_portion == 0:
-			y = 0
+		if nbg_portion==0 and nbc_portion == 0: #si la portion ne contient pas de G ou de C y=0
+			y = 0 
 		else :
-			y = (nbg_portion-nbc_portion)/(nbg_portion+nbc_portion)
+			y = (nbg_portion-nbc_portion)/(nbg_portion+nbc_portion) # y (ordonnée) correspond a la proportions de G et de C dans chaque portions
 
-		debut += (portion - recouvrement)
+		debut += (portion - recouvrement) #on avance sur la chaine
 
 		list_x.append(x)
 		list_y.append(y)
