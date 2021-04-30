@@ -7,7 +7,7 @@ def transcription (DNA):
 	return ARN
 
 #Ouvre le dictionnaire de transcription codon-AA et retourne la clé (l'AA correspondant au codon)
-#Creer une fonction qui remplace les codons par un AA
+#Puis remplace les codons par leurs AA respectifs
 
 def traduction (DNA,phase):
 	with open("dico_traduction.json") as f:
@@ -15,7 +15,7 @@ def traduction (DNA,phase):
 	ARN = transcription(DNA)
 
 	protein = ""
-	begin = phase-1
+	begin = phase-1 # avec python l'index commence a 0
 	lenght = len(ARN)
 	while begin <= lenght-3:
 
