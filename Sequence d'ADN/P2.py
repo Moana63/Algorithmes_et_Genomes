@@ -3,8 +3,8 @@
 
 #COMPTE LES NUCLEOTIDES DE LA CHAINE ET LA LONGUEUR DE LA CHAINE (ET LES ERREURS)
 def count_nucleotides(Sequence):
-	nbA = nbT = nbC = nbG = nbTotal = nberror =0  # /!\ il faut déclarer les variables utilisées dans la fonction A L'INTERIEUR de la fonction
-	for lettre in Sequence:
+	nbA = nbT = nbC = nbG = nbTotal = nberror =0  # /!\ il faut déclarer toutes les variables utilisées dans la fonction A L'INTERIEUR de la fonction
+	for lettre in Sequence: #lire "pour tout premier sous ensemble de séquence" (a savoir ici les nucleotides)
 		if lettre == 'A':
 			nbA = nbA + 1    #on peut aussi écrire nbA += 1
 		elif lettre == 'T':
@@ -21,7 +21,7 @@ def count_nucleotides(Sequence):
 
 #CALCULE ET IMPRIME LES PROPORTIONS DES NUCLEOTIDES ET LA LONGUEUR DE LA CHAINE (ET LES ERREURS)
 def proportions(counts):
-	nbA, nbT, nbC, nbG, nbTotal, nberror = counts # /!\ il faut déclarer les variables utilisées dans la fonction A L'INTERIEUR de la fonction. Count renvoi aux resultats de la fonction précédente.
+	nbA, nbT, nbC, nbG, nbTotal, nberror = counts # Count renvoi aux resultats de la fonction précédente.
 	
 	print('Total de la sequence=', nbTotal)
 	print("Proportion in DNA:")
