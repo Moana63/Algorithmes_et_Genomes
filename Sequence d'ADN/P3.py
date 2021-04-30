@@ -2,7 +2,7 @@
 #pour dessiner un fragment d'ADN dans un graphique on attribut a chacune des lettre un déplacement (haut, droite, gauche, bas)
 #Le problème revient à calculer les coordonnées des points du chemin, sous la forme d'une liste d'abscisses 
 #et une liste d'ordonnées et de les representer dans un graphique.
-#Pour simplifier on ajoute au graphique les coordonnées d'une partie des lettres de la séquence seulemet (cf "multiple")
+#Pour simplifier on ajoute au graphique les coordonnées d'une partie des lettres de la séquence seuleument. Pour cel la fonction chemin aura un argument "multiple"
 
 import matplotlib.pyplot as pyplot
 import pylab
@@ -16,7 +16,7 @@ moves = {
 	"C": [1,0]
 }
 
-#écrire une fonction qui prend en entrée un fragment d'ADN codé comme une chaine de caractères  (sequence) contenant les 4 abbréviations,
+#on crée une fonction qui prend en entrée un fragment d'ADN codé comme une chaine de caractères (sequence) contenant les 4 abbréviations,
 #et qui retourne deux listes list_x et list_y, correspondant respectivement aux coordonées x et y des points du chemin.
 
 def coordonees_chemin (Sequence, multiple):
@@ -49,10 +49,11 @@ def random_seq (length):
 
 	a = ["A" , 'T', 'C', 'G']
 	seq_adn2 = ""  
-	for i in range(length):           #boucle for qui repete 50 fois l'operation
+	for i in range(length):           #boucle for qui repete "lenght" fois l'operation
 		result = random.choice(a)
 		seq_adn2 += result        #stock la chaine dans une variable seq_adn2
 	return seq_adn2
 
-#On utilise la fonction pour tracer un graphique d'une séquence d'ADN de 10000 bases,
+#On utilise la fonction chemin pour tracer un graphique d'une séquence d'ADN générée aléatoirement par la fonction random 
+# (sequence de 10000 bases,en prenant en compte chaque lettre dont l'index et un multiple de 5)
 chemin(random_seq(10000),5)
